@@ -26,17 +26,19 @@ public class Nc78_反转链表 {
     }
 
     public static ListNode ReverseList(ListNode head) {
-        ListNode result = head;
-        boolean isHead = false;
-        while (head.next != null) {
-            ListNode next = head.next;
-            ListNode pre = result;
-            result = next;
-            result.next = pre;
+        ListNode next = null;
+        ListNode pre = null;
+        // pre -> head -> next
+        //1 -> 2 -> 3
+        while (head!= null) {
+            next = head.next;
+            head.next = pre;
 
+            pre = head;
+            head = next;
 
         }
-        return result;
+        return pre;
 
     }
 }
