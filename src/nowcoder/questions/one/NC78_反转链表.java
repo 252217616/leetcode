@@ -17,7 +17,7 @@ import nowcoder.utils.NCoderUtils;
  * @author lujun
  * @date 2021/12/16
  */
-public class Nc78_反转链表 {
+public class NC78_反转链表 {
 
     public static void main(String[] args) {
         final ListNode listNode = NCoderUtils.buildListNode(new int[]{1, 2, 3});
