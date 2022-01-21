@@ -20,10 +20,12 @@ public class NC19_连续子数组的最大和 {
 
     public static int FindGreatestSumOfSubArray(int[] array) {
         int len = array.length ;
+        //动态规划
         int[] dp = new int[len];
         dp[0] = array[0];
         int result = array[0];
         for (int i = 1; i < len; i++) {
+            //当前 等于 当前数值 或 前面和加当前 的最大
             dp[i] = Math.max(array[i],dp[i-1]+array[i]);
             result = Math.max(dp[i],result);
         }

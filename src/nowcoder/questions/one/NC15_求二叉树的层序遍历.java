@@ -26,16 +26,19 @@ public class NC15_求二叉树的层序遍历 {
      * @return int整型ArrayList<ArrayList<>>
      */
     public ArrayList<ArrayList<Integer>> levelOrder (TreeNode root) {
+        //记录层序的结果
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         if(root == null){
             return result;
         }
-        // write code here
+        //用队列保存这一层的数据
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()){
+            //开始循环前 队列里的数据就是前一层的节点
             int len = queue.size();
             ArrayList<Integer> levelNums = new ArrayList<>();
+            //把前一层的节点取出来，放入的是第二层的节点
             for (int i = 0; i < len; i++) {
                 final TreeNode cur = queue.poll();
                 levelNums.add(cur.val);

@@ -19,11 +19,15 @@ public class NC4_判断链表中是否有环 {
     }
 
     public boolean hasCycle(ListNode head) {
+        //快指针 每次走2步
         ListNode fast = head;
+        //慢指针 每次走一步
         ListNode slow = head;
+        //快指针 和 下一步 不为NULL 就可以走
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+            //快慢指针重合说明有环
             if (slow == fast) {
                 return true;
             }
