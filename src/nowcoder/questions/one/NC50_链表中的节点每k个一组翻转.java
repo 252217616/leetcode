@@ -18,8 +18,32 @@ import nowcoder.utils.NCoderUtils;
  */
 public class NC50_链表中的节点每k个一组翻转 {
     public static void main(String[] args) {
-        final ListNode listNode = reverseKGroup(NCoderUtils.buildListNode(new int[]{1, 2, 3, 4, 5}), 2);
+        final ListNode listNode = reverseKGroup(NCoderUtils.buildListNode(new int[]{1, 2, 3, 4, 5}), 3);
         System.out.println();
+    }
+
+    public static ListNode reverseKGroup (ListNode head, int k) {
+      ListNode cur = head;
+      //找到要反转得区间
+        int count = 0;
+        while (cur != null && count != k){
+            cur = cur.next;
+            count++;
+        }
+        if(count == k){
+            //反转好的链表
+            cur = reverseKGroup(cur,k);
+            //开始反转
+            while (count!=0){
+                count--;
+                ListNode next = head.next;
+                head.next = cur;
+                cur = head;
+                head = next;
+            }
+            head = cur;
+        }
+        return head;
     }
 
     /**
@@ -28,31 +52,31 @@ public class NC50_链表中的节点每k个一组翻转 {
      * @param k int整型
      * @return ListNode类
      */
-    public static ListNode reverseKGroup (ListNode head, int k) {
-        // write code here
-        ListNode cur = head;
-        int count = 0;
-        // 找到待反转的第k个结点
-        while (cur != null && count != k) {
-            cur = cur.next;
-            count++;
-        }
-        if (count == k) {
-            // 递归
-            cur = reverseKGroup(cur, k);
-            // 反转列表
-            while (count != 0) {
-                count--;
-                ListNode tmp = head.next;
-                head.next = cur;
-                cur = head;
-                head = tmp;
-            }
-            // 拼接后续的链表
-            head = cur;
-        }
-        return head;
-    }
+//    public static ListNode reverseKGroup (ListNode head, int k) {
+//        // write code here
+//        ListNode cur = head;
+//        int count = 0;
+//        // 找到待反转的第k个结点
+//        while (cur != null && count != k) {
+//            cur = cur.next;
+//            count++;
+//        }
+//        if (count == k) {
+//            // 递归
+//            cur = reverseKGroup(cur, k);
+//            // 反转列表
+//            while (count != 0) {
+//                count--;
+//                ListNode next = head.next;
+//                head.next = cur;
+//                cur = head;
+//                head = next;
+//            }
+//            // 拼接后续的链表
+//            head = cur;
+//        }
+//        return head;
+//    }
 
 
 }
